@@ -1,7 +1,7 @@
 let canvas;
 let ctx;
 // let symbols = ['+', '-', '/', '*', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-let symbols = ['+', '-', '/', '*', '0', '1'];
+let symbols = ['+', 'x', 'y', '-', '/', '*', '0', '1'];
 let symbolsLen = symbols.length;
 let symbolObjectArray = [];
 
@@ -20,7 +20,7 @@ window.addEventListener('resize', (e) =>
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     // draw();
-    generateRandomSymbols();
+    //FIXME: WHEN IT RESIZES IT DOENST WORK PROPERLY
 });
 
 function main()
@@ -36,6 +36,7 @@ function main()
 function draw()
 {
     requestAnimationFrame(draw);
+    ctx.font = '30px Monospace';
     ctx.fillStyle = '#292F36';
     ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
     for (let i = 0; i < symbolObjectArray.length; i++)
