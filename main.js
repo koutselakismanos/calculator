@@ -23,7 +23,7 @@ class Symbol
 
     move() 
     {
-        this.posY -= this.posZ.meow(0, 30, 0, 2);
+        this.posY -= this.posZ.meow(0, 30, 0, 1);
         if (this.posY <= 0)
             this.posY = window.innerHeight + 20;
     }
@@ -32,8 +32,8 @@ class Symbol
     {
         this.move();
         ctx.font = `${this.posZ}px Monospace`;
-        ctx.shadowColor = this.fillStyle;
         ctx.shadowBlur = 20;
+        ctx.shadowColor = this.fillStyle;
         ctx.fillStyle = this.fillStyle;
         ctx.fillText(this.symbolType, this.posX, this.posY);
     }
@@ -91,6 +91,7 @@ function generateRandomSymbols()
             Math.random() * window.innerHeight,
             Math.floor(Math.random() * maxZ)];
             symbolArray.push(new Symbol(randomSymbolType, '#FF6B6B', randomPositionX, randomPositionY, randomPositionZ));
+            symbolArray.push(new Symbol(randomSymbolType, 'hsl(0, 100%, 71%)', randomPositionX, randomPositionY, randomPositionZ));
         }
         else
         {
@@ -98,7 +99,7 @@ function generateRandomSymbols()
             Math.random() * window.innerWidth,
             Math.random() * window.innerHeight,
             Math.floor(Math.random() * maxZ)];
-            symbolArray.push(new Symbol(randomSymbolType, '#4ECDC4', randomPositionX, randomPositionY, randomPositionZ));
+            symbolArray.push(new Symbol(randomSymbolType, 'hsl(176, 56%, 55%)', randomPositionX, randomPositionY, randomPositionZ));
         }
     }
 }
