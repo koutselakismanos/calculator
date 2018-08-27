@@ -5,7 +5,7 @@ let symbols = ['+', 'x', 'y', '-', '/', '*', '0', '1'];
 let symbolsLen = symbols.length;
 let symbolArray = [];
 
-Number.prototype.meow = function (in_min, in_max, out_min, out_max)
+Number.prototype.mapNumber = function (in_min, in_max, out_min, out_max)
 {
     return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
@@ -23,7 +23,7 @@ class Symbol
 
     move() 
     {
-        this.posY -= this.posZ.meow(0, 30, 0, 1);
+        this.posY -= this.posZ.mapNumber(0, 30, 0, 1);
         if (this.posY <= 0)
             this.posY = window.innerHeight + 20;
     }
