@@ -19,6 +19,7 @@ body {
 .result{
     font-size: 150%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+    text-align: right;
     padding: 30px;
     border: 1px solid black;
     margin: 10px;
@@ -48,7 +49,7 @@ body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
     border: 1px solid black;
     text-align: center;
-    padding: 50px;
+    padding: 30px;
 }
 
 .plus{
@@ -64,6 +65,7 @@ body {
     grid-column: 4 ;
     grid-row: 4 / 6 ;
 }
+
 .zero{
     grid-column: 1 / 3;
 }

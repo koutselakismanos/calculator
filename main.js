@@ -1,9 +1,10 @@
 let canvas;
 let ctx;
-// let symbols = ['+', '-', '/', '*', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-let symbols = ['+', 'x', 'y', '-', '/', '*', '0', '1'];
+let symbols = ['+', '-', '/', '*', '0', 'x', 'y', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+// let symbols = ['+', 'x', 'y', '-', '/', '*', '0', '1'];
 let symbolsLen = symbols.length;
 let symbolArray = [];
+let maxZ = 30;
 
 Number.prototype.mapNumber = function (in_min, in_max, out_min, out_max)
 {
@@ -23,9 +24,9 @@ class Symbol
 
     move() 
     {
-        this.posY -= this.posZ.mapNumber(0, 30, 0, 1);
+        this.posY -= this.posZ.mapNumber(0, maxZ, 0, 1);
         if (this.posY <= 0)
-            this.posY = window.innerHeight + 20;
+            this.posY = window.innerHeight + 60;
     }
 
     drawSymbol()
@@ -81,8 +82,7 @@ function draw()
 function generateRandomSymbols()
 {
     symbolArray = [];
-    let maxZ = 30;
-    for (let i = 0; i < 200; i++)
+    for (let i = 0; i < 300; i++)
     {
         if (i % 2 === 0)
         {
@@ -90,7 +90,6 @@ function generateRandomSymbols()
             Math.random() * window.innerWidth,
             Math.random() * window.innerHeight,
             Math.floor(Math.random() * maxZ)];
-            symbolArray.push(new Symbol(randomSymbolType, '#FF6B6B', randomPositionX, randomPositionY, randomPositionZ));
             symbolArray.push(new Symbol(randomSymbolType, 'hsl(0, 100%, 71%)', randomPositionX, randomPositionY, randomPositionZ));
         }
         else
