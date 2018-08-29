@@ -5,7 +5,6 @@ const maxZ       = 30;
 const symbols    = ['+', '-', '/', '*', '0', 'x', 'y', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const symbolsLen = symbols.length;
 let symbolArray  = [];
-//symbolArray
 
 Number.prototype.mapNumber = function (in_min, in_max, out_min, out_max)
 {
