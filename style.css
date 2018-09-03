@@ -1,4 +1,4 @@
-/* #292F36 */
+/* #292f36 */
 /* #4ECDC4 */
 /* #FF6B6B */
 
@@ -8,6 +8,7 @@
 
 body {
     background-color: #292F36;
+    overflow: hidden;
 }
 
 #myCanvas{
@@ -36,11 +37,12 @@ body {
     background-color: white;
     box-shadow: 2px 2px 10px black;
 }
+
 .grid-block{
 
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: auto;
+    grid-template-columns: auto auto auto auto;
     padding: 20px;
 }
 
@@ -50,21 +52,14 @@ body {
     border: 1px solid black;
     text-align: center;
     padding: 30px;
+    user-select: none;
 }
 
-.plus{
+
+.equals{
     grid-column: 4;
-    grid-row: 2 / 4;
-}
-
-.minus{
-    grid-column: 4;
-}
-
-.enter{
-    grid-column: 4 ;
-    grid-row: 4 / 6 ;
-}
+    grid-row: 5;
+} 
 
 .zero{
     grid-column: 1 / 3;
