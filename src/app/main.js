@@ -24,35 +24,48 @@ function main()
 
 const htmlResult = document.querySelector('.result');
 const htmlContext = document.querySelector('.context');
-let context = '';
+let content = '';
 
 function result(input)
 {
     if (input === '=')
     {
-        context = eval(context)
-        htmlResul.textContent = context;
+        content = decode(content)
+        content = eval(content)
+        htmlResult.textContent = content;
     }
     else if (input === 'AC')
     {
-        context = '';
+        content = '';
         htmlResult.textContent = '0';
     }
     else if (input === '%')
     {
-        context = Math.presentage(context);
+        content = Math.presentage(content);
+        //FIXME: FIX this
         htmlResult.textContent = '0';
     }
-    else if (input === '-' || input === '+' || input === '/' || input === '*')
+    else if (input === '+/-' && content != '')
     {
-        context += input;
-        context = eval(context)
-        htmlResult.textContent = context;
+        content = '-(' + content + ')';
+        // console.log(content);
+        htmlResult.textContent = content;
     }
     else
     {
-        context += input;
-        htmlResult.textContent = context;
+        if (input !== '+/-')
+        {
+            content += input;
+            htmlResult.textContent = content;
+        }
     }
+
 }
 
+function decode(expression)
+{
+    expression = expression.replace(/([*/+-])+/gi, '$1');
+    expression = expression.replace(/^[*/]/gi, '');
+    expression = expression.replace(/[+/*-]$/gi, ' ');
+    return expression;
+}
