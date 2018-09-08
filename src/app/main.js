@@ -43,13 +43,14 @@ function result(input)
         context = Math.presentage(context);
         htmlResult.textContent = '0';
     }
-    else if(input === '-' || input=== '+' || input === '/' || input === '*')
+    else if (input === '-' || input === '+' || input === '/' || input === '*')
     {
         context += input;
         context = eval(context)
         htmlResult.textContent = context;
     }
-    else{
+    else
+    {
         context += input;
         htmlResult.textContent = context;
     }
