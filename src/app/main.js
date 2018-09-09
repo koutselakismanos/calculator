@@ -19,7 +19,7 @@ function main() {
 
 const htmlResult = document.querySelector('.result');
 const htmlContext = document.querySelector('.context');
-let content = '0';
+let content = '';
 let regexNumber = /[*-/+]/;
 
 function result(input) {
@@ -35,15 +35,17 @@ function result(input) {
         }
     }
     else if (input === 'AC') {
-        content = '0';
+        content = '';
         htmlResult.textContent = '0';
     }
     else if (input === '%') {
         // try {
-        content = decode(content.toString())
-        content = eval(content)
-        content = (content / 100);
-        htmlResult.textContent = content;
+        if (content !== '0') {
+            content = decode(content.toString())
+            content = eval(content)
+            content = (content / 100);
+            htmlResult.textContent = content;
+        }
     }
     else if (input === '+/-' && content != '') {
         content = '-(' + content + ')';
