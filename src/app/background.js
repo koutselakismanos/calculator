@@ -6,15 +6,12 @@ const symbols = ['+', '-', '/', '*', '0', 'x', 'y', '1', '2', '3', '4', '5', '6'
 const symbolsLen = symbols.length;
 let symbolArray = [];
 
-Number.prototype.mapNumber = function (in_min, in_max, out_min, out_max)
-{
+Number.prototype.mapNumber = function (in_min, in_max, out_min, out_max) {
     return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-class Symbol
-{
-    constructor(symbolType, fillStyle, posX, posY, posZ)
-    {
+class Symbol {
+    constructor(symbolType, fillStyle, posX, posY, posZ) {
         this.symbolType = symbolType;
         this.fillStyle = fillStyle;
         this.posX = posX;
@@ -22,15 +19,13 @@ class Symbol
         this.posZ = posZ;
     }
 
-    move() 
-    {
+    move() {
         this.posY -= this.posZ.mapNumber(0, maxZ, 0, 1);
         if (this.posY <= 0)
             this.posY = window.innerHeight + 60;
     }
 
-    drawSymbol()
-    {
+    drawSymbol() {
         this.move();
         ctx.font = `${this.posZ}px Monospace`;
         ctx.shadowBlur = 20;
@@ -40,26 +35,14 @@ class Symbol
     }
 }
 
-// window.onload = () =>
-// {
-//     backgroundRun();
-//     canvas = document.getElementById('myCanvas');
-//     ctx = canvas.getContext('2d');
-//     // draw();
-//     generateRandomSymbols();
-//     draw();
-// }
 
-
-window.addEventListener('resize', (e) =>
-{
+window.addEventListener('resize', (e) => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     generateRandomSymbols();
 });
 
-function backgroundRun()
-{
+function backgroundRun() {
     let canvas = document.createElement('canvas');
     canvas.id = 'myCanvas';
     canvas.width = window.innerWidth;
@@ -69,24 +52,19 @@ function backgroundRun()
     return 'meow';
 }
 
-function draw()
-{
+function draw() {
     requestAnimationFrame(draw);
     ctx.fillStyle = '#292F36';
     ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-    for (let i = 0; i < symbolArray.length; i++)
-    {
+    for (let i = 0; i < symbolArray.length; i++) {
         symbolArray[i].drawSymbol();
     }
 }
 
-function generateRandomSymbols()
-{
+function generateRandomSymbols() {
     symbolArray = [];
-    for (let i = 0; i < 300; i++)
-    {
-        if (i % 2 === 0)
-        {
+    for (let i = 0; i < 150; i++) {
+        if (i % 2 === 0) {
             let [randomSymbolType, randomPositionX, randomPositionY, randomPositionZ] = [symbols[Math.floor(Math.random() * symbolsLen)],
             Math.random() * window.innerWidth,
             Math.random() * window.innerHeight,
@@ -94,8 +72,7 @@ function generateRandomSymbols()
 
             symbolArray.push(new Symbol(randomSymbolType, 'hsl(0, 100%, 71%)', randomPositionX, randomPositionY, randomPositionZ));
         }
-        else
-        {
+        else {
             let [randomSymbolType, randomPositionX, randomPositionY, randomPositionZ] = [symbols[Math.floor(Math.random() * symbolsLen)],
             Math.random() * window.innerWidth,
             Math.random() * window.innerHeight,

@@ -1,22 +1,17 @@
-window.onload = () =>
-{
+window.onload = () => {
     main();
     backgroundRun();
     canvas = document.getElementById('myCanvas');
     ctx = canvas.getContext('2d');
-    // draw();
     generateRandomSymbols();
     draw();
 }
 
 
-function main()
-{
+function main() {
     let buttons = document.querySelectorAll('.grid-block div');
-    for (let i of buttons)
-    {
-        i.addEventListener("click", (e) =>
-        {
+    for (let i of buttons) {
+        i.addEventListener("click", (e) => {
             result(i.innerHTML);
         })
     }
@@ -25,36 +20,42 @@ function main()
 const htmlResult = document.querySelector('.result');
 const htmlContext = document.querySelector('.context');
 let content = '';
+let regexNumber = /[*-/+]/;
 
-function result(input)
-{
-    if (input === '=')
-    {
-        content = decode(content)
-        content = eval(content)
-        htmlResult.textContent = content;
+function result(input) {
+    console.log(content);
+    if (input === '=') {
+        try {
+            content = decode(content.toString())
+            content = eval(content)
+            if (content === undefined) throw htmlResult.textContent = '0';
+            htmlResult.textContent = content;
+        }
+        catch{
+            console.log('error');
+        }
     }
-    else if (input === 'AC')
-    {
+    else if (input === 'AC') {
         content = '';
         htmlResult.textContent = '0';
     }
-    else if (input === '%')
-    {
-        content = Math.presentage(content);
-        //FIXME: FIX this
-        htmlResult.textContent = '0';
-    }
-    else if (input === '+/-' && content != '')
-    {
-        content = '-(' + content + ')';
-        // console.log(content);
+    else if (input === '%') {
+        // try {
+        content = decode(content.toString())
+        content = eval(content)
+        content = (content / 100);
         htmlResult.textContent = content;
     }
-    else
-    {
-        if (input !== '+/-')
-        {
+    else if (input === '+/-' && content != '') {
+        content = '-(' + content + ')';
+        htmlResult.textContent = content;
+    }
+    else {
+        if (input !== '+/-' && content[content.length - 1] === ')' && regexNumber.test(input)) {
+            content += input;
+            htmlResult.textContent = content;
+        }
+        else if (content[content.length - 1] !== ')') {
             content += input;
             htmlResult.textContent = content;
         }
@@ -62,8 +63,7 @@ function result(input)
 
 }
 
-function decode(expression)
-{
+function decode(expression) {
     expression = expression.replace(/([*/+-])+/gi, '$1');
     expression = expression.replace(/^[*/]/gi, '');
     expression = expression.replace(/[+/*-]$/gi, ' ');
