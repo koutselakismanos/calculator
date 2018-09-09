@@ -1,6 +1,7 @@
 $color-black: #292f36;
 $color-mid: #4ECDC4;
 $color-top: #FF6B6B ;
+$color-gray: #E8EBED;
 
 *{
     margin: 0;
@@ -37,7 +38,7 @@ $color-top: #FF6B6B ;
         padding: 30px;
         border: 1px solid black;
         margin: 10px;
-        background-color: white;
+        background-color: $color-gray;
         color: darkcyan;
     }
 }
@@ -50,7 +51,7 @@ $color-top: #FF6B6B ;
     padding: 20px;
 
     div{
-        background-color: white;
+        background-color: $color-gray;
         font-size: 150%;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
         border: 1px solid black;
