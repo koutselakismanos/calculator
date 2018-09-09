@@ -19,11 +19,10 @@ function main() {
 
 const htmlResult = document.querySelector('.result');
 const htmlContext = document.querySelector('.context');
-let content = '';
+let content = '0';
 let regexNumber = /[*-/+]/;
 
 function result(input) {
-    console.log(content);
     if (input === '=') {
         try {
             content = decode(content.toString())
@@ -36,7 +35,7 @@ function result(input) {
         }
     }
     else if (input === 'AC') {
-        content = '';
+        content = '0';
         htmlResult.textContent = '0';
     }
     else if (input === '%') {
