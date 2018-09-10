@@ -40,7 +40,8 @@ function result(input) {
     }
     else if (input === '%') {
         // try {
-        if (content !== '0') {
+        if (content !== '') {
+            console.log('meow');
             content = decode(content.toString())
             content = eval(content)
             content = (content / 100);
